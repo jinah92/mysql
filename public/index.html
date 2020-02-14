@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+    <button>모든 멤버 보기</button>
+    <div></div>
+    <script>
+        $(document).ready(function(){
+            $('button').click(function(){
+                $.post('member/selectAll', {}, function(returnData){
+                    let resultTxt = '';
+                    returnData.message.forEach(member=>{
+                        resultTxt += member.name+ "<br>";
+                    });
+                    $('div').html(resultTxt);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
